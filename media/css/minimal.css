@@ -1,0 +1,230 @@
+/* ==========================================================================
+   mod_hc_socialmedia - layout "minimal"
+   Ultra clean / ghost / premium discreto
+   + Suporte a estilo individual via CSS vars (--hc-*)
+   ========================================================================== */
+
+.mod-hc-socialmedia--minimal {
+    --hc-min-color: currentColor;
+    --hc-min-opacity: .65;
+    --hc-min-opacity-hover: .95;
+
+    --hc-min-font-size: 11px;
+    --hc-min-line-height: 1.1;
+
+    --hc-min-icon-halo: rgba(0, 0, 0, .05);
+    --hc-min-icon-halo-hover: rgba(0, 0, 0, .10);
+
+    --hc-min-focus: currentColor;
+    --hc-min-focus-offset: 2px;
+
+    --hc-min-fast: 120ms;
+    --hc-min-smooth: 180ms;
+}
+
+/* Base */
+.mod-hc-socialmedia--minimal {
+    display: block;
+    color: var(--hc-min-color);
+    font-size: var(--hc-min-font-size);
+    line-height: var(--hc-min-line-height);
+}
+
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* =========================================================
+   LINK + SUPORTE INDIVIDUAL (--hc-*)
+   ========================================================= */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    text-decoration: none !important;
+    background: none !important;
+
+    opacity: var(--hc-min-opacity);
+
+    /* Variáveis individuais (com fallback minimal) */
+    color: var(--hc-text, inherit);
+    background-color: var(--hc-bg, transparent);
+
+    border-style: solid;
+    border-width: var(--hc-border-width, 0);
+    border-color: var(--hc-border, transparent);
+
+    border-radius: var(--hc-radius, 0);
+
+    padding-top: var(--hc-py, 0);
+    padding-bottom: var(--hc-py, 0);
+    padding-left: var(--hc-px, 0);
+    padding-right: var(--hc-px, 0);
+}
+
+/* Transitions globais */
+.is-transition-fast .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-min-fast) ease,
+    transform var(--hc-min-fast) ease,
+    background-color var(--hc-min-fast) ease,
+    border-color var(--hc-min-fast) ease,
+    color var(--hc-min-fast) ease;
+}
+
+.is-transition-smooth .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-min-smooth) ease,
+    transform var(--hc-min-smooth) ease,
+    background-color var(--hc-min-smooth) ease,
+    border-color var(--hc-min-smooth) ease,
+    color var(--hc-min-smooth) ease;
+}
+
+.is-transition-none .mod-hc-socialmedia__link {
+    transition: none;
+}
+
+/* Transition individual */
+.mod-hc-socialmedia__link[style*="--hc-transition: fast"] {
+    transition-duration: var(--hc-min-fast);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: smooth"] {
+    transition-duration: var(--hc-min-smooth);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: none"] {
+    transition: none !important;
+}
+
+/* Hover */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link:hover {
+    opacity: var(--hc-min-opacity-hover);
+
+    background-color: var(--hc-bg-hover, var(--hc-bg, transparent));
+    border-color: var(--hc-border-hover, var(--hc-border, transparent));
+    color: var(--hc-text-hover, var(--hc-text, inherit));
+}
+
+/* Active */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link:active {
+    transform: translateY(1px);
+}
+
+/* Focus */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link:focus {
+    outline: none;
+}
+
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link:focus-visible {
+    outline: 1px solid var(--hc-min-focus);
+    outline-offset: var(--hc-min-focus-offset);
+    border-radius: 8px;
+}
+
+/* Shadow individual */
+.mod-hc-socialmedia__link[style*="--hc-shadow: 1"] {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+
+/* Icon */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--hc-min-icon-halo);
+}
+
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__link:hover .mod-hc-socialmedia__icon {
+    background: var(--hc-min-icon-halo-hover);
+}
+
+/* SVG / IMG / ICON */
+.mod-hc-socialmedia--minimal svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--minimal svg * {
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--minimal img {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
+
+.mod-hc-socialmedia--minimal i {
+    font-size: 1em;
+    line-height: 1;
+}
+
+/* Label */
+.mod-hc-socialmedia--minimal .mod-hc-socialmedia__label {
+    white-space: nowrap;
+    letter-spacing: .03em;
+    font-weight: 500;
+}
+
+/* Content mode */
+.is-content-icon .mod-hc-socialmedia__label {
+    display: none;
+}
+
+.is-content-text .mod-hc-socialmedia__icon {
+    display: none;
+}
+
+/* Direction */
+.is-direction-column .mod-hc-socialmedia__list {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Alignment */
+.is-align-start .mod-hc-socialmedia__list {
+    justify-content: flex-start;
+}
+
+.is-align-center .mod-hc-socialmedia__list {
+    justify-content: center;
+}
+
+.is-align-end .mod-hc-socialmedia__list {
+    justify-content: flex-end;
+}
+
+.is-align-space-between .mod-hc-socialmedia__list {
+    justify-content: space-between;
+}
+
+/* Device */
+.is-device-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .is-device-desktop {
+        display: block;
+    }
+}
+
+.is-device-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .is-device-mobile {
+        display: none;
+    }
+}

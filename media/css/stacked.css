@@ -1,0 +1,221 @@
+/* ==========================================================================
+   mod_hc_socialmedia - layout "stacked"
+   Tiles verticais (ícone cima / texto baixo)
+   + Suporte a estilo individual (--hc-*)
+   ========================================================================== */
+
+.mod-hc-socialmedia--stacked {
+    --hc-st-color: currentColor;
+
+    --hc-st-font-size: 12px;
+    --hc-st-line-height: 1.15;
+
+    --hc-st-inner-gap: 6px;
+
+    --hc-st-pad-y: 16px;
+    --hc-st-pad-x: 18px;
+
+    --hc-st-bg: rgba(0, 0, 0, .02);
+    --hc-st-bg-hover: rgba(0, 0, 0, .05);
+
+    --hc-st-border: rgba(0, 0, 0, .14);
+    --hc-st-border-hover: rgba(0, 0, 0, .28);
+
+    --hc-st-radius: 16px;
+
+    --hc-st-shadow-soft: 0 6px 18px rgba(0, 0, 0, .08);
+    --hc-st-shadow: 0 12px 30px rgba(0, 0, 0, .15);
+
+    --hc-st-focus: currentColor;
+    --hc-st-focus-offset: 3px;
+
+    --hc-st-fast: 140ms;
+    --hc-st-smooth: 240ms;
+
+    --hc-st-min: 120px;
+}
+
+/* Base */
+.mod-hc-socialmedia--stacked {
+    display: block;
+    color: var(--hc-st-color);
+    font-size: var(--hc-st-font-size);
+    line-height: var(--hc-st-line-height);
+}
+
+/* Layout flex (mantido como você definiu) */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hc-st-min);
+}
+
+/* =========================================================
+   LINK (Tile) + SUPORTE INDIVIDUAL (--hc-*)
+   ========================================================= */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--hc-st-inner-gap);
+
+    text-align: center;
+    text-decoration: none;
+
+    min-height: 110px;
+
+    /* padding individual com fallback */
+    padding-top: var(--hc-py, var(--hc-st-pad-y));
+    padding-bottom: var(--hc-py, var(--hc-st-pad-y));
+    padding-left: var(--hc-px, var(--hc-st-pad-x));
+    padding-right: var(--hc-px, var(--hc-st-pad-x));
+
+    /* cores individuais */
+    color: var(--hc-text, inherit);
+    background: var(--hc-bg, var(--hc-st-bg));
+
+    border-style: solid;
+    border-width: var(--hc-border-width, 1px);
+    border-color: var(--hc-border, var(--hc-st-border));
+
+    border-radius: var(--hc-radius, var(--hc-st-radius));
+
+    transition: all var(--hc-st-smooth) ease;
+}
+
+/* Hover */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__link:hover {
+    background: var(--hc-bg-hover, var(--hc-st-bg-hover));
+    border-color: var(--hc-border-hover, var(--hc-st-border-hover));
+    color: var(--hc-text-hover, var(--hc-text, inherit));
+    transform: translateY(-3px);
+}
+
+/* Shadow global */
+.is-shadow-1 .mod-hc-socialmedia__link {
+    box-shadow: var(--hc-st-shadow-soft);
+}
+
+.is-shadow-1 .mod-hc-socialmedia__link:hover {
+    box-shadow: var(--hc-st-shadow);
+}
+
+/* Shadow individual */
+.mod-hc-socialmedia__link[style*="--hc-shadow: 1"] {
+    box-shadow: var(--hc-st-shadow-soft);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-shadow: 1"]:hover {
+    box-shadow: var(--hc-st-shadow);
+}
+
+/* Active */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__link:active {
+    transform: translateY(0);
+}
+
+/* Focus */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__link:focus {
+    outline: none;
+}
+
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__link:focus-visible {
+    outline: 2px solid var(--hc-st-focus);
+    outline-offset: var(--hc-st-focus-offset);
+}
+
+/* Transition individual */
+.mod-hc-socialmedia__link[style*="--hc-transition: fast"] {
+    transition-duration: var(--hc-st-fast);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: smooth"] {
+    transition-duration: var(--hc-st-smooth);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: none"] {
+    transition: none !important;
+}
+
+/* Icon */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.mod-hc-socialmedia--stacked svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--stacked svg * {
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--stacked img {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
+
+.mod-hc-socialmedia--stacked i {
+    font-size: 1em;
+}
+
+/* Label */
+.mod-hc-socialmedia--stacked .mod-hc-socialmedia__label {
+    font-size: .95em;
+    font-weight: 500;
+    letter-spacing: .03em;
+}
+
+/* Content mode */
+.is-content-icon .mod-hc-socialmedia__label {
+    display: none;
+}
+
+.is-content-text .mod-hc-socialmedia__icon {
+    display: none;
+}
+
+/* Alignment */
+.is-align-start .mod-hc-socialmedia__list {
+    justify-content: flex-start;
+}
+
+.is-align-center .mod-hc-socialmedia__list {
+    justify-content: center;
+}
+
+.is-align-end .mod-hc-socialmedia__list {
+    justify-content: flex-end;
+}
+
+/* Device */
+.is-device-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .is-device-desktop {
+        display: block;
+    }
+}
+
+.is-device-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .is-device-mobile {
+        display: none;
+    }
+}

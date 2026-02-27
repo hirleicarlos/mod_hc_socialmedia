@@ -1,0 +1,245 @@
+/* ==========================================================================
+   mod_hc_socialmedia - layout "inline" (AJUSTADO CLEAN)
+   + Suporte a estilo individual via CSS vars (--hc-*)
+   ========================================================================== */
+
+.mod-hc-socialmedia--inline {
+    --hc-in-color: currentColor;
+
+    --hc-in-font-size: 12px;
+    --hc-in-line-height: 1.1;
+
+    --hc-in-opacity: .85;
+    --hc-in-opacity-hover: 1;
+
+    --hc-in-gap: 0;
+    --hc-in-item-gap: 8px;
+
+    --hc-in-sep-char: "|";
+    --hc-in-sep-opacity: .35;
+    --hc-in-sep-space: 14px;
+
+    --hc-in-focus: currentColor;
+    --hc-in-focus-offset: 3px;
+
+    --hc-in-fast: 140ms;
+    --hc-in-smooth: 240ms;
+}
+
+/* Base */
+.mod-hc-socialmedia--inline {
+    display: block;
+    color: var(--hc-in-color);
+    font-size: var(--hc-in-font-size);
+    line-height: var(--hc-in-line-height);
+}
+
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__item {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Separador */
+.mod-hc-socialmedia--inline
+.mod-hc-socialmedia__item + .mod-hc-socialmedia__item::before {
+    content: var(--hc-in-sep-char);
+    opacity: var(--hc-in-sep-opacity);
+    margin: 0 var(--hc-in-sep-space);
+    pointer-events: none;
+}
+
+/* =========================================================
+   LINK + SUPORTE INDIVIDUAL (--hc-*)
+   ========================================================= */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--hc-in-item-gap);
+
+    text-decoration: none !important;
+    background: none !important;
+
+    opacity: var(--hc-in-opacity);
+
+    /* Variáveis individuais */
+    color: var(--hc-text, inherit);
+    background-color: var(--hc-bg, transparent);
+
+    border-style: solid;
+    border-width: var(--hc-border-width, 0);
+    border-color: var(--hc-border, transparent);
+
+    border-radius: var(--hc-radius, 0);
+
+    padding-top: var(--hc-py, 2px);
+    padding-bottom: var(--hc-py, 2px);
+    padding-left: var(--hc-px, 0);
+    padding-right: var(--hc-px, 0);
+}
+
+/* Transitions globais */
+.is-transition-fast .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-in-fast) ease,
+    transform var(--hc-in-fast) ease,
+    background-color var(--hc-in-fast) ease,
+    border-color var(--hc-in-fast) ease,
+    color var(--hc-in-fast) ease;
+}
+
+.is-transition-smooth .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-in-smooth) ease,
+    transform var(--hc-in-smooth) ease,
+    background-color var(--hc-in-smooth) ease,
+    border-color var(--hc-in-smooth) ease,
+    color var(--hc-in-smooth) ease;
+}
+
+.is-transition-none .mod-hc-socialmedia__link {
+    transition: none;
+}
+
+/* Transition individual */
+.mod-hc-socialmedia__link[style*="--hc-transition: fast"] {
+    transition-duration: var(--hc-in-fast);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: smooth"] {
+    transition-duration: var(--hc-in-smooth);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: none"] {
+    transition: none !important;
+}
+
+/* Hover */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__link:hover {
+    opacity: var(--hc-in-opacity-hover);
+
+    background-color: var(--hc-bg-hover, var(--hc-bg, transparent));
+    border-color: var(--hc-border-hover, var(--hc-border, transparent));
+    color: var(--hc-text-hover, var(--hc-text, inherit));
+}
+
+/* Active */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__link:active {
+    transform: translateY(1px);
+}
+
+/* Focus */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__link:focus {
+    outline: none;
+}
+
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__link:focus-visible {
+    outline: 2px solid var(--hc-in-focus);
+    outline-offset: var(--hc-in-focus-offset);
+    border-radius: 6px;
+    opacity: 1;
+}
+
+/* Shadow individual */
+.mod-hc-socialmedia__link[style*="--hc-shadow: 1"] {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+
+/* Ícone */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.mod-hc-socialmedia--inline svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--inline svg * {
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia--inline img {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
+
+.mod-hc-socialmedia--inline i {
+    font-size: 1em;
+}
+
+/* Label */
+.mod-hc-socialmedia--inline .mod-hc-socialmedia__label {
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .92em;
+}
+
+/* Content mode */
+.is-content-icon .mod-hc-socialmedia__label {
+    display: none;
+}
+
+.is-content-text .mod-hc-socialmedia__icon {
+    display: none;
+}
+
+/* Alignment */
+.is-align-start .mod-hc-socialmedia__list {
+    justify-content: flex-start;
+}
+
+.is-align-center .mod-hc-socialmedia__list {
+    justify-content: center;
+}
+
+.is-align-end .mod-hc-socialmedia__list {
+    justify-content: flex-end;
+}
+
+.is-align-space-between .mod-hc-socialmedia__list {
+    justify-content: space-between;
+}
+
+/* Device */
+.is-device-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .is-device-desktop {
+        display: block;
+    }
+}
+
+.is-device-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .is-device-mobile {
+        display: none;
+    }
+}
+
+/* Mobile ultra small */
+@media (max-width: 420px) {
+    .mod-hc-socialmedia--inline .mod-hc-socialmedia__label {
+        display: none;
+    }
+}

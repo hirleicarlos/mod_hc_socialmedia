@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldprefix="Joomla\CMS\Form\Field">
+
+    <fieldset name="item" label="MOD_HC_SOCIALMEDIA_ITEM_FIELDSET">
+
+        <!-- ================= BÁSICO ================= -->
+        <field name="enabled" type="radio" default="1"
+               label="JENABLED" description="MOD_HC_SOCIALMEDIA_ITEM_ENABLED_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="name" type="text"
+               label="MOD_HC_SOCIALMEDIA_ITEM_NAME_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_NAME_DESC" />
+
+        <field name="url" type="url" required="true"
+               label="MOD_HC_SOCIALMEDIA_ITEM_URL_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_URL_DESC" />
+
+        <!-- ================= ÍCONE ================= -->
+        <field name="icon_type" type="list" default="svg"
+               label="MOD_HC_SOCIALMEDIA_ITEM_ICON_TYPE_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_ICON_TYPE_DESC">
+            <option value="svg">MOD_HC_SOCIALMEDIA_ICON_TYPE_SVG</option>
+            <option value="image">MOD_HC_SOCIALMEDIA_ICON_TYPE_IMAGE</option>
+            <option value="class">MOD_HC_SOCIALMEDIA_ICON_TYPE_CLASS</option>
+        </field>
+
+        <field name="icon_svg" type="textarea" filter="raw" rows="6"
+               label="MOD_HC_SOCIALMEDIA_ITEM_ICON_SVG_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_ICON_SVG_DESC" />
+
+        <field name="icon_media" type="media" directory="images"
+               label="MOD_HC_SOCIALMEDIA_ITEM_ICON_MEDIA_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_ICON_MEDIA_DESC" />
+
+        <field name="icon_class" type="text"
+               label="MOD_HC_SOCIALMEDIA_ITEM_ICON_CLASS_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_ICON_CLASS_DESC" />
+
+        <!-- ================= LINK ================= -->
+        <field name="target" type="list" default="_blank"
+               label="MOD_HC_SOCIALMEDIA_ITEM_TARGET_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_TARGET_DESC">
+            <option value="_blank">_blank</option>
+            <option value="_self">_self</option>
+        </field>
+
+        <field name="nofollow" type="radio" default="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_NOFOLLOW_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_NOFOLLOW_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="aria_label" type="text"
+               label="MOD_HC_SOCIALMEDIA_ITEM_ARIA_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_ARIA_DESC" />
+
+        <!-- =========================================================
+             ESTILO INDIVIDUAL (CAMPOS DO BOTÃO)
+             - Agora com "Usar estilo personalizado?" controlando via showon
+             ========================================================= -->
+
+        <field name="use_custom" type="radio" default="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_USE_CUSTOM_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_USE_CUSTOM_DESC">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="bg_color" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_BG_COLOR_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_BG_COLOR_DESC"
+               showon="use_custom:1" />
+
+        <field name="text_color" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_TEXT_COLOR_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_TEXT_COLOR_DESC"
+               showon="use_custom:1" />
+
+        <field name="border_color" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_BORDER_COLOR_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_BORDER_COLOR_DESC"
+               showon="use_custom:1" />
+
+        <field name="bg_hover" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_BG_HOVER_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_BG_HOVER_DESC"
+               showon="use_custom:1" />
+
+        <field name="text_hover" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_TEXT_HOVER_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_TEXT_HOVER_DESC"
+               showon="use_custom:1" />
+
+        <field name="border_hover" type="color"
+               label="MOD_HC_SOCIALMEDIA_ITEM_BORDER_HOVER_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_BORDER_HOVER_DESC"
+               showon="use_custom:1" />
+
+        <field name="border_width" type="number" default="1" min="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_BORDER_WIDTH_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_BORDER_WIDTH_DESC"
+               showon="use_custom:1" />
+
+        <field name="radius" type="number" default="10" min="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_RADIUS_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_RADIUS_DESC"
+               showon="use_custom:1" />
+
+        <field name="padding_y" type="number" default="10" min="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_PADDING_Y_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_PADDING_Y_DESC"
+               showon="use_custom:1" />
+
+        <field name="padding_x" type="number" default="12" min="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_PADDING_X_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_PADDING_X_DESC"
+               showon="use_custom:1" />
+
+        <field name="shadow" type="radio" default="0"
+               label="MOD_HC_SOCIALMEDIA_ITEM_SHADOW_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_SHADOW_DESC"
+               showon="use_custom:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field name="transition" type="list" default="smooth"
+               label="MOD_HC_SOCIALMEDIA_ITEM_TRANSITION_LABEL"
+               description="MOD_HC_SOCIALMEDIA_ITEM_TRANSITION_DESC"
+               showon="use_custom:1">
+            <option value="none">MOD_HC_SOCIALMEDIA_TRANSITION_NONE</option>
+            <option value="fast">MOD_HC_SOCIALMEDIA_TRANSITION_FAST</option>
+            <option value="smooth">MOD_HC_SOCIALMEDIA_TRANSITION_SMOOTH</option>
+        </field>
+
+    </fieldset>
+
+</form>

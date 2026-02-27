@@ -1,0 +1,318 @@
+/* ==========================================================================
+   mod_hc_socialmedia - layout "default" (AJUSTADO)
+   Arquivo: media/mod_hc_socialmedia/css/default.css
+   Objetivo: padrão profissional (footer, sidebar, banner)
+   - SEM “linha/underline” no hover
+   - Hover: leve destaque (opacity + micro lift + halo no ícone)
+   - Focus: outline visível (acessível)
+   + Suporte a estilo individual via CSS vars no <a style="...">
+     --hc-bg, --hc-text, --hc-border, --hc-bg-hover, --hc-text-hover, --hc-border-hover
+     --hc-border-width, --hc-radius, --hc-py, --hc-px, --hc-shadow, --hc-transition
+   ========================================================================== */
+
+.mod-hc-socialmedia {
+    --hc-sm-color: currentColor;
+
+    --hc-sm-font-size: 14px;
+    --hc-sm-line-height: 1.2;
+
+    --hc-sm-gap: 12px; /* fallback (gap vem inline no UL) */
+    --hc-sm-item-gap: 10px; /* ícone x label */
+
+    /* hover/focus */
+    --hc-sm-opacity: .92;
+    --hc-sm-opacity-hover: 1;
+    --hc-sm-hover-lift: -1px; /* micro lift */
+
+    --hc-sm-focus: currentColor;
+    --hc-sm-focus-offset: 3px;
+
+    /* halo do ícone (suave e profissional) */
+    --hc-sm-icon-halo: rgba(0, 0, 0, .04);
+    --hc-sm-icon-halo-hover: rgba(0, 0, 0, .08);
+
+    /* shapes */
+    --hc-sm-radius: 10px;
+    --hc-sm-bg-hover: rgba(0, 0, 0, .05);
+
+    --hc-sm-shadow-soft: 0 6px 18px rgba(0, 0, 0, .10);
+
+    /* transitions */
+    --hc-sm-fast: 120ms;
+    --hc-sm-smooth: 220ms;
+}
+
+/* base */
+.mod-hc-socialmedia {
+    display: block;
+    color: var(--hc-sm-color);
+    font-size: var(--hc-sm-font-size);
+    line-height: var(--hc-sm-line-height);
+}
+
+.mod-hc-socialmedia__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hc-sm-gap);
+    align-items: center;
+}
+
+.mod-hc-socialmedia__item {
+    margin: 0;
+    padding: 0;
+}
+
+/* link clean (SEM underline) */
+.mod-hc-socialmedia__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--hc-sm-item-gap);
+
+    color: inherit;
+
+    /* remove underline do template também */
+    text-decoration: none !important;
+    background-image: none !important;
+
+    padding: 2px 0;
+    opacity: var(--hc-sm-opacity);
+
+    /* =========================================================
+       ESTILO INDIVIDUAL (via style="--hc-...")
+       - tudo com fallback pra não quebrar o global
+       ========================================================= */
+    color: var(--hc-text, inherit);
+    background-color: var(--hc-bg, transparent);
+
+    border-style: solid;
+    border-width: var(--hc-border-width, 0);
+    border-color: var(--hc-border, transparent);
+
+    border-radius: var(--hc-radius, 0);
+
+    /* padding individual (se vier) */
+    padding-top: var(--hc-py, 2px);
+    padding-bottom: var(--hc-py, 2px);
+    padding-left: var(--hc-px, 0);
+    padding-right: var(--hc-px, 0);
+}
+
+/* transitions (globais) */
+.is-transition-fast .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-sm-fast) ease,
+    transform var(--hc-sm-fast) ease,
+    background-color var(--hc-sm-fast) ease,
+    box-shadow var(--hc-sm-fast) ease,
+    border-color var(--hc-sm-fast) ease,
+    color var(--hc-sm-fast) ease;
+}
+
+.is-transition-smooth .mod-hc-socialmedia__link {
+    transition: opacity var(--hc-sm-smooth) ease,
+    transform var(--hc-sm-smooth) ease,
+    background-color var(--hc-sm-smooth) ease,
+    box-shadow var(--hc-sm-smooth) ease,
+    border-color var(--hc-sm-smooth) ease,
+    color var(--hc-sm-smooth) ease;
+}
+
+.is-transition-none .mod-hc-socialmedia__link {
+    transition: none;
+}
+
+/* =========================================================
+   TRANSITION INDIVIDUAL (se vier --hc-transition)
+   - só troca duração, sem mexer na config global
+   ========================================================= */
+.mod-hc-socialmedia__link[style*="--hc-transition: fast"] {
+    transition-duration: var(--hc-sm-fast);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: smooth"] {
+    transition-duration: var(--hc-sm-smooth);
+}
+
+.mod-hc-socialmedia__link[style*="--hc-transition: none"] {
+    transition: none !important;
+}
+
+/* hover (sem linha) */
+.mod-hc-socialmedia__link:hover {
+    opacity: var(--hc-sm-opacity-hover);
+    transform: translateY(var(--hc-sm-hover-lift));
+
+    /* hover individual (se vier) */
+    background-color: var(--hc-bg-hover, var(--hc-bg, transparent));
+    border-color: var(--hc-border-hover, var(--hc-border, transparent));
+    color: var(--hc-text-hover, var(--hc-text, inherit));
+}
+
+/* active */
+.mod-hc-socialmedia__link:active {
+    transform: translateY(1px);
+}
+
+/* focus */
+.mod-hc-socialmedia__link:focus {
+    outline: none;
+}
+
+.mod-hc-socialmedia__link:focus-visible {
+    outline: 2px solid var(--hc-sm-focus);
+    outline-offset: var(--hc-sm-focus-offset);
+    border-radius: 8px;
+    opacity: 1;
+}
+
+/* icon */
+.mod-hc-socialmedia__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex: 0 0 auto;
+
+    /* halo discreto */
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--hc-sm-icon-halo);
+}
+
+/* SVG inline herda cor */
+.mod-hc-socialmedia__icon svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia__icon svg * {
+    fill: currentColor;
+}
+
+.mod-hc-socialmedia__icon img {
+    width: 1em;
+    height: 1em;
+    display: block;
+    object-fit: contain;
+}
+
+.mod-hc-socialmedia__icon i {
+    font-size: 1em;
+    line-height: 1;
+    display: block;
+}
+
+/* label */
+.mod-hc-socialmedia__label {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* content_mode */
+.is-content-icon .mod-hc-socialmedia__label {
+    display: none;
+}
+
+.is-content-text .mod-hc-socialmedia__icon {
+    display: none;
+}
+
+/* direction */
+.is-direction-row .mod-hc-socialmedia__list {
+    flex-direction: row;
+}
+
+.is-direction-column .mod-hc-socialmedia__list {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* alignment */
+.is-align-start .mod-hc-socialmedia__list {
+    justify-content: flex-start;
+}
+
+.is-align-center .mod-hc-socialmedia__list {
+    justify-content: center;
+}
+
+.is-align-end .mod-hc-socialmedia__list {
+    justify-content: flex-end;
+}
+
+.is-align-space-between .mod-hc-socialmedia__list {
+    justify-content: space-between;
+}
+
+/* device */
+.is-device-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .is-device-desktop {
+        display: block;
+    }
+}
+
+.is-device-mobile {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .is-device-mobile {
+        display: none;
+    }
+}
+
+/* shapes
+   - quando o shape está ativo, vira “chip”
+   - hover: fundo suave
+*/
+.is-shape-none .mod-hc-socialmedia__link {
+    border-radius: 0;
+}
+
+/* chip base */
+.is-shape-rounded .mod-hc-socialmedia__link,
+.is-shape-square .mod-hc-socialmedia__link,
+.is-shape-circle .mod-hc-socialmedia__link {
+    padding: 6px 10px;
+}
+
+/* radius */
+.is-shape-rounded .mod-hc-socialmedia__link {
+    border-radius: var(--hc-sm-radius);
+}
+
+.is-shape-square .mod-hc-socialmedia__link {
+    border-radius: 0;
+}
+
+.is-shape-circle .mod-hc-socialmedia__link {
+    border-radius: 999px;
+}
+
+/* circle + só ícone vira botão redondo */
+.is-shape-circle.is-content-icon .mod-hc-socialmedia__link {
+    padding: 10px;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+}
+
+/* shadow (global) */
+.is-shadow-1.is-shape-rounded .mod-hc-socialmedia__link,
+.is-shadow-1.is-shape-square .mod-hc-socialmedia__link,
+.is-shadow-1.is-shape-circle .mod-hc-socialmedia__link {
+    box-shadow: var(--hc-sm-shadow-soft);
+}
+
+/* shadow (individual: --hc-shadow: 1) */
+.mod-hc-socialmedia__link[style*="--hc-shadow: 1"] {
+    box-shadow: var(--hc-sm-shadow-soft);
+}

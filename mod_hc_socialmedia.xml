@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+
+    <name>mod_hc_socialmedia</name>
+
+    <author>Hirlei Carlos Pereira de Araújo</author>
+    <creationDate>2026-02-17</creationDate>
+    <copyright>(C) 2026 Hirlei Carlos Pereira de Araújo</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <authorEmail>prof.hirleicarlos@gmail.com</authorEmail>
+    <authorUrl>https://hirleicarlos.github.io/</authorUrl>
+    <version> 1.0.0</version>
+    <description>MOD_HC_SOCIALMEDIA_XML_DESCRIPTION</description>
+
+    <namespace path="src">Joomla\Module\Socialmedia</namespace>
+
+    <files>
+        <folder module="mod_hc_socialmedia">services</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <folder>forms</folder>
+    </files>
+
+    <media destination="mod_hc_socialmedia" folder="media">
+        <folder>css</folder>
+    </media>
+
+    <languages>
+        <language tag="en-GB">language/en-GB/mod_hc_socialmedia.ini</language>
+        <language tag="en-GB">language/en-GB/mod_hc_socialmedia.sys.ini</language>
+        <language tag="pt-BR">language/pt-BR/mod_hc_socialmedia.ini</language>
+        <language tag="pt-BR">language/pt-BR/mod_hc_socialmedia.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+
+            <!-- ================= ITENS ================= -->
+            <fieldset name="items" label="MOD_HC_SOCIALMEDIA_FIELDSET_ITEMS">
+                <field
+                        name="items"
+                        type="subform"
+                        label="MOD_HC_SOCIALMEDIA_ITEMS_LABEL"
+                        description="MOD_HC_SOCIALMEDIA_ITEMS_DESC"
+                        multiple="true"
+                        layout="joomla.form.field.subform.repeatable"
+                        formsource="modules/mod_hc_socialmedia/forms/item.xml"
+                />
+            </fieldset>
+
+            <!-- ================= LAYOUT (inclui display) ================= -->
+            <fieldset name="layout" label="MOD_HC_SOCIALMEDIA_FIELDSET_LAYOUT">
+
+                <field name="layout_mode"
+                       type="list"
+                       default="default"
+                       label="MOD_HC_SOCIALMEDIA_LAYOUT_MODE_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_LAYOUT_MODE_DESC">
+                    <option value="default">MOD_HC_SOCIALMEDIA_LAYOUT_DEFAULT</option>
+                    <option value="minimal">MOD_HC_SOCIALMEDIA_LAYOUT_MINIMAL</option>
+                    <option value="inline">MOD_HC_SOCIALMEDIA_LAYOUT_INLINE</option>
+                    <option value="boxed">MOD_HC_SOCIALMEDIA_LAYOUT_BOXED</option>
+                    <option value="stacked">MOD_HC_SOCIALMEDIA_LAYOUT_STACKED</option>
+                </field>
+
+                <!-- ICON / TEXT / BOTH (global) -->
+                <field name="content_mode"
+                       type="list"
+                       default="both"
+                       label="MOD_HC_SOCIALMEDIA_CONTENT_MODE_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_CONTENT_MODE_DESC">
+                    <option value="icon">MOD_HC_SOCIALMEDIA_CONTENT_ICON</option>
+                    <option value="text">MOD_HC_SOCIALMEDIA_CONTENT_TEXT</option>
+                    <option value="both">MOD_HC_SOCIALMEDIA_CONTENT_BOTH</option>
+                </field>
+
+                <field name="direction"
+                       type="list"
+                       default="row"
+                       label="MOD_HC_SOCIALMEDIA_DIRECTION_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_DIRECTION_DESC">
+                    <option value="row">MOD_HC_SOCIALMEDIA_DIR_ROW</option>
+                    <option value="column">MOD_HC_SOCIALMEDIA_DIR_COLUMN</option>
+                </field>
+
+                <field name="alignment"
+                       type="list"
+                       default="start"
+                       label="MOD_HC_SOCIALMEDIA_ALIGNMENT_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_ALIGNMENT_DESC">
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end">End</option>
+                    <option value="space-between">Space Between</option>
+                </field>
+
+                <field name="gap"
+                       type="number"
+                       default="12"
+                       min="0"
+                       label="MOD_HC_SOCIALMEDIA_GAP_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_GAP_DESC" />
+
+                <!-- Display (device) dentro do Layout -->
+                <field name="device"
+                       type="list"
+                       default="all"
+                       label="MOD_HC_SOCIALMEDIA_DEVICE_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_DEVICE_DESC">
+                    <option value="all">MOD_HC_SOCIALMEDIA_DEVICE_ALL</option>
+                    <option value="desktop">MOD_HC_SOCIALMEDIA_DEVICE_DESKTOP</option>
+                    <option value="mobile">MOD_HC_SOCIALMEDIA_DEVICE_MOBILE</option>
+                </field>
+
+            </fieldset>
+
+            <!-- ================= STYLE ================= -->
+            <fieldset name="style" label="MOD_HC_SOCIALMEDIA_FIELDSET_STYLE">
+
+                <!-- só faz sentido quando content_mode inclui icon -->
+                <field name="icon_size"
+                       type="number"
+                       default="20"
+                       min="10"
+                       label="MOD_HC_SOCIALMEDIA_ICON_SIZE_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_ICON_SIZE_DESC"
+                       showon="content_mode:icon,both" />
+
+                <field name="shape"
+                       type="list"
+                       default="none"
+                       label="MOD_HC_SOCIALMEDIA_SHAPE_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_SHAPE_DESC">
+                    <option value="none">None</option>
+                    <option value="circle">Circle</option>
+                    <option value="rounded">Rounded</option>
+                    <option value="square">Square</option>
+                </field>
+
+                <field name="shadow"
+                       type="radio"
+                       default="0"
+                       label="MOD_HC_SOCIALMEDIA_SHADOW_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_SHADOW_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="transition"
+                       type="list"
+                       default="smooth"
+                       label="MOD_HC_SOCIALMEDIA_TRANSITION_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_TRANSITION_DESC">
+                    <option value="none">None</option>
+                    <option value="fast">Fast</option>
+                    <option value="smooth">Smooth</option>
+                </field>
+
+            </fieldset>
+
+            <!-- ================= ADVANCED ================= -->
+            <fieldset name="advanced" label="MOD_HC_SOCIALMEDIA_FIELDSET_ADVANCED">
+
+                <field name="custom_class"
+                       type="text"
+                       label="MOD_HC_SOCIALMEDIA_CUSTOM_CLASS_LABEL"
+                       description="MOD_HC_SOCIALMEDIA_CUSTOM_CLASS_DESC" />
+
+                <field name="layout"
+                       type="modulelayout"
+                       label="JFIELD_ALT_LAYOUT_LABEL"
+                       class="form-select"
+                       validate="moduleLayout" />
+
+            </fieldset>
+
+        </fields>
+    </config>
+
+</extension>
