@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package     Joomla.Site
+ * @package     Joomla.Module
  * @subpackage  mod_hc_socialmedia
  *
  * @copyright   (C) 2026 Hirlei Carlos Pereira de Araújo
@@ -9,7 +9,6 @@
  *
  * @since       1.0.0
  */
-
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Extension\Service\Provider\HelperFactory;
